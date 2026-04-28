@@ -1,4 +1,4 @@
-# 🚚 Smart Logistics Optimization Dashboard
+# 🚚 OptiRoute Engine
 
 A real-time logistics optimization system demonstrating core algorithmic paradigms on a delivery network.
 
