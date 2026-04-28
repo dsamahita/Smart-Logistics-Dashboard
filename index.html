@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Logistics Dashboard</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background: #0f0f0f;
+            color: white;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 12px;
+            width: 60%;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background: #ff0055;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        canvas {
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🚚 Smart Logistics Dashboard</h1>
+
+<a href="/run">
+    <button>Run System</button>
+</a>
+
+{% if deliveries %}
+
+<div class="card">
+    <h2>📊 Delivery Deadlines</h2>
+    <canvas id="deliveryChart"></canvas>
+</div>
+
+<div class="card">
+    <h2>📈 Greedy vs DP</h2>
+    <canvas id="compareChart"></canvas>
+</div>
+
+<div class="card">
+    <h2>🗺️ Route Costs</h2>
+    <canvas id="routeChart"></canvas>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const deliveries = {{ deliveries | tojson }};
+    const greedy = {{ greedy }};
+    const dp = {{ dp }};
+    const routes = {{ routes | tojson }};
+
+    let currentIndex = 0;
+
+    // -------- Delivery Chart --------
+    const deliveryChart = new Chart(document.getElementById("deliveryChart"), {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: "Deadline",
+                data: [],
+                backgroundColor: "#ff0055"
+            }]
+        }
+    });
+
+    // -------- Greedy vs DP --------
+    const compareChart = new Chart(document.getElementById("compareChart"), {
+        type: 'bar',
+        data: {
+            labels: ["Greedy", "DP"],
+            datasets: [{
+                label: "Value",
+                data: [0, 0],
+                backgroundColor: ["#00c3ff", "#00ff88"]
+            }]
+        }
+    });
+
+    // -------- Route Chart --------
+    const routeChart = new Chart(document.getElementById("routeChart"), {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: "Cost",
+                data: [],
+                borderColor: "#ffaa00",
+                fill: false
+            }]
+        }
+    });
+
+    // -------- REAL-TIME SIMULATION --------
+    function simulate() {
+        if (currentIndex < deliveries.length) {
+            let d = deliveries[currentIndex];
+
+            deliveryChart.data.labels.push("ID " + d.id);
+            deliveryChart.data.datasets[0].data.push(d.deadline);
+            deliveryChart.update();
+
+            currentIndex++;
+            setTimeout(simulate, 1000);
+        } else {
+            // Show results after loading
+
+            compareChart.data.datasets[0].data = [greedy, dp];
+            compareChart.update();
+
+            routeChart.data.labels = Object.keys(routes);
+            routeChart.data.datasets[0].data = Object.values(routes);
+            routeChart.update();
+        }
+    }
+
+    simulate();
+});
+</script>
+
+{% endif %}
+
+</body>
+</html>
