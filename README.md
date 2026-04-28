@@ -87,3 +87,63 @@ This mimics real-world logistics processing systems.
 ---
 
 ## 📁 Project Structure
+Smart-Logistics-Dashboard/
+│
+├── app.py
+├── templates/
+│ └── index.html
+├── static/
+│ └── style.css (optional)
+└── README.md
+---
+
+## ▶️ How to Run
+
+1. Install dependencies:
+
+pip install flask
+
+
+2. Run the server:
+
+python app.py
+
+
+3. Open in browser:
+
+http://127.0.0.1:5000
+
+
+---
+
+## 📊 Output
+
+- Delivery deadlines visualization  
+- Greedy vs DP comparison chart  
+- Route cost analysis  
+- Real-time simulation dashboard  
+
+---
+
+## 🎯 Learning Outcomes
+
+- Practical implementation of algorithms
+- Understanding trade-offs (Greedy vs DP)
+- Visualization of algorithm behavior
+- Full-stack integration (backend + UI)
+
+---
+
+## 🎤 Viva Explanation (Short)
+
+> This project demonstrates a smart logistics system where multiple algorithmic paradigms are integrated and visualized through a real-time dashboard.
+
+---
+
+## 🚀 Future Scope
+
+- Real-time traffic integration  
+- Map-based visualization (Google Maps / Folium)  
+- Machine learning for demand prediction  
+
+---
