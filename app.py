@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-# CREATE APP (THIS LINE IS VERY IMPORTANT)
+# CREATE APP 
 app = Flask(__name__)
 
 # -------- MODULE 1 --------
