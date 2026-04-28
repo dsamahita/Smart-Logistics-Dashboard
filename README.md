@@ -147,3 +147,9 @@ http://127.0.0.1:5000
 - Machine learning for demand prediction  
 
 ---
+### WEB DASHBOARD 
+<img width="1556" height="811" alt="image" src="https://github.com/user-attachments/assets/ba902b2c-614d-4f90-9a86-3e46195f5bad" />
+
+<img width="1195" height="690" alt="image" src="https://github.com/user-attachments/assets/b6a7048b-3dd9-4a09-8ec0-2319c3292e37" />
+<img width="1210" height="692" alt="image" src="https://github.com/user-attachments/assets/dd6d1421-bb1b-4336-a22a-efb495c33dbe" />
+
