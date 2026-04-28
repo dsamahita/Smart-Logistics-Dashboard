@@ -134,7 +134,7 @@ http://127.0.0.1:5000
 
 ---
 
-## 🎤 Viva Explanation (Short)
+##  Explanation (Short)
 
 > This project demonstrates a smart logistics system where multiple algorithmic paradigms are integrated and visualized through a real-time dashboard.
 
